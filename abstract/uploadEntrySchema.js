@@ -1,4 +1,4 @@
-import { UploadcareFile } from '@uploadcare/upload-client';
+import { uploadClient } from './url-exports.js';
 
 /**
  * @typedef {Object} UploadEntry
@@ -17,7 +17,7 @@ import { UploadcareFile } from '@uploadcare/upload-client';
  * @property {String} ctxName
  * @property {String} cdnUrl
  * @property {String} cdnUrlModifiers
- * @property {UploadcareFile} fileInfo
+ * @property {uploadClient.UploadcareFile} fileInfo
  * @property {Boolean} isUploading
  */
 
@@ -88,7 +88,7 @@ export const uploadEntrySchema = Object.freeze({
     value: null,
   },
   fileInfo: {
-    type: UploadcareFile,
+    type: uploadClient.UploadcareFile,
     value: null,
   },
   isUploading: {

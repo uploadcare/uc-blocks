@@ -1,5 +1,5 @@
 import { UploaderBlock } from '../../abstract/UploaderBlock.js';
-import { uploadFileGroup } from '@uploadcare/upload-client';
+import { uploadClient } from '../../abstract/url-exports.js';
 
 /** @typedef {import('@uploadcare/upload-client').UploadcareFile[]} FileList} */
 
@@ -69,7 +69,7 @@ export class DataOutput extends UploaderBlock {
         let uuidList = data.map((fileDesc) => {
           return fileDesc.uuid;
         });
-        let resp = await uploadFileGroup(uuidList, {
+        let resp = await uploadClient.uploadFileGroup(uuidList, {
           ...this.getUploadClientOptions(),
         });
         this.$.output = {

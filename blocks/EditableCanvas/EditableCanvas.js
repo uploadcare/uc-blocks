@@ -1,5 +1,5 @@
 import { Block } from '../../abstract/Block.js';
-import { applyStyles } from '@symbiotejs/symbiote';
+import { symbiote } from '../../abstract/url-exports.js';
 import { checkerboardCssBg } from '../svg-backgrounds/svg-backgrounds.js';
 
 /**
@@ -23,7 +23,7 @@ export class EditableCanvas extends Block {
 
   constructor() {
     super();
-    applyStyles(this, {
+    symbiote.applyStyles(this, {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',

@@ -1,5 +1,5 @@
 // Symbiote.js
-export { BaseComponent, Data, TypedCollection, TypedData } from '@symbiotejs/symbiote';
+export { symbiote } from './abstract/url-exports.js';
 
 // Abstract:
 export { Block } from './abstract/Block.js';

@@ -1,7 +1,7 @@
 import { UploaderBlock } from '../../abstract/UploaderBlock.js';
 import { ActivityBlock } from '../../abstract/ActivityBlock.js';
 import { resizeImage } from '../utils/resizeImage.js';
-import { uploadFile } from '@uploadcare/upload-client';
+import { uploadClient } from '../../abstract/url-exports.js';
 import { UiMessage } from '../MessageBox/MessageBox.js';
 import { fileCssBg } from '../svg-backgrounds/svg-backgrounds.js';
 import { createCdnUrl, createCdnUrlModifiers, createOriginalUrl } from '../../utils/cdn-utils.js';
@@ -101,7 +101,7 @@ export class FileItem extends UploaderBlock {
       /** @type {String} */
       this.uid = id;
 
-      /** @type {import('@symbiotejs/symbiote').TypedData} */
+      /** @type {import('../../abstract/TypedData.js').TypedData} */
       this.entry = this.uploadCollection?.read(id);
 
       if (!this.entry) {
@@ -244,7 +244,7 @@ export class FileItem extends UploaderBlock {
       this.$.progressUnknown = true;
     }
     try {
-      let fileInfo = await uploadFile(this.file || this.externalUrl, {
+      let fileInfo = await uploadClient.uploadFile(this.file || this.externalUrl, {
         ...this.getUploadClientOptions(),
         fileName: this.entry.getValue('fileName'),
         onProgress: (progress) => {

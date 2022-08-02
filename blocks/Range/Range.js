@@ -1,6 +1,6 @@
-import { BaseComponent } from '@symbiotejs/symbiote';
+import { symbiote } from '../../abstract/url-exports.js';
 
-export class Range extends BaseComponent {
+export class Range extends symbiote.BaseComponent {
   init$ = {
     cssLeft: '50%',
     barActive: false,

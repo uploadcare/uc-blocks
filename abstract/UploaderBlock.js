@@ -1,6 +1,8 @@
+import { symbiote } from './url-exports.js';
+
 import { ActivityBlock } from './ActivityBlock.js';
 
-import { Data, TypedCollection } from '@symbiotejs/symbiote';
+import { TypedCollection } from './TypedCollection.js';
 import { mergeMimeTypes } from '../utils/mergeMimeTypes.js';
 import { imageMimeTypes } from '../utils/imageMimeTypes.js';
 import { uploadEntrySchema } from './uploadEntrySchema.js';
@@ -211,7 +213,7 @@ export class UploaderBlock extends ActivityBlock {
     let data = [];
     let items = this.uploadCollection.items();
     items.forEach((itemId) => {
-      let uploadEntryData = Data.getNamedCtx(itemId).store;
+      let uploadEntryData = symbiote.Data.getNamedCtx(itemId).store;
       /** @type {import('@uploadcare/upload-client').UploadcareFile} */
       let fileInfo = uploadEntryData.fileInfo;
       // TODO: create dedicated output type

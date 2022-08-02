@@ -1,4 +1,4 @@
-import { BaseComponent } from '@symbiotejs/symbiote';
+import { symbiote, hljs } from '../../abstract/url-exports.js';
 
 const INIT_HTML = /*html*/ `
 <!DOCTYPE html>
@@ -102,34 +102,15 @@ class Caret {
   }
 }
 
-export class LiveHtml extends BaseComponent {
+export class LiveHtml extends symbiote.BaseComponent {
   hl() {
     let offset = Caret.getPosition(this.ref.editor);
 
     this.ref.editor.textContent = this.ref.editor.textContent;
-    let html = this.ref.editor.innerHTML;
-    html = html
-      .replace(/&lt;/g, '<span -tag-arr->&lt;</span>')
-      .replace(/&gt;/g, '<span -tag-arr->&gt;</span>')
-      .split('="')
-      .map((chunk) => {
-        return chunk.replace('"', '</span>"');
-      })
-      .join(`="<span -attr->`)
-      .replace(/"/g, '<span -quote->"</span>')
-      .replace(/=/g, '<span -equal->=</span>')
-      .split('<span -tag-arr->&lt;</span>/')
-      .join('<span -tag-arr->&lt;/</span>')
-      .split('<span -tag-arr->&lt;</span>!--')
-      .join('<span -comment->&lt;!--')
-      .split('--<span -tag-arr->&gt;</span>')
-      .join('--&gt;</span>')
 
-      .split('<span -tag-arr->&lt;</span>style<span -tag-arr->&gt;</span>')
-      .join('<span -tag-arr->&lt;</span>style<span -tag-arr->&gt;</span><span -style->')
-
-      .split('<span -tag-arr->&lt;/</span>style<span -tag-arr->&gt;</span>')
-      .join('</span><span -tag-arr->&lt;/</span>style<span -tag-arr->&gt;</span>');
+    let html = this.ref.editor.textContent;
+    // @ts-ignore
+    html = hljs.default.highlight(this.ref.editor.textContent, { language: 'html' }).value;
     this.ref.editor.innerHTML = html;
 
     Caret.setPosition(offset, this.ref.editor);

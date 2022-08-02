@@ -1,4 +1,4 @@
-import { getUserAgent } from '@uploadcare/upload-client';
+import { uploadClient } from '../../abstract/url-exports.js';
 import { PACKAGE_VERSION, PACKAGE_NAME } from '../../env.js';
 
 /**
@@ -6,7 +6,7 @@ import { PACKAGE_VERSION, PACKAGE_NAME } from '../../env.js';
  * @returns {ReturnType<import('@uploadcare/upload-client').CustomUserAgentFn>}
  */
 export function customUserAgent(options) {
-  return getUserAgent({
+  return uploadClient.getUserAgent({
     ...options,
     libraryName: PACKAGE_NAME,
     libraryVersion: PACKAGE_VERSION,

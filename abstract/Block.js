@@ -1,10 +1,12 @@
-import { BaseComponent } from '@symbiotejs/symbiote';
+import { symbiote } from './url-exports.js';
 import { applyTemplateData } from '../utils/applyTemplateData.js';
 import { l10nProcessor } from './l10nProcessor.js';
 
 const TAG_PREFIX = 'lr-';
 
-export class Block extends BaseComponent {
+export class Block extends symbiote.BaseComponent {
+  allowCustomTemplate = true;
+
   init$ = {
     '*ctxTargetsRegistry': new Set(),
   };
@@ -131,5 +133,3 @@ export class Block extends BaseComponent {
     super.reg(name.startsWith(TAG_PREFIX) ? name : TAG_PREFIX + name);
   }
 }
-
-export { BaseComponent };

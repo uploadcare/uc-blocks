@@ -1,5 +1,5 @@
 import { Block } from '../../abstract/Block.js';
-import { create } from '@symbiotejs/symbiote';
+import { symbiote } from '../../abstract/url-exports.js';
 
 export class Tabs extends Block {
   /** @param {String} tabL10nStr */
@@ -39,7 +39,7 @@ export class Tabs extends Block {
         return tabName.trim();
       });
       tabList.forEach((tabL10nStr) => {
-        let tabEl = create({
+        let tabEl = symbiote.create({
           tag: 'div',
           attributes: {
             class: 'tab',

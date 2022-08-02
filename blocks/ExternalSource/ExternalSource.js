@@ -1,4 +1,4 @@
-import { create } from '@symbiotejs/symbiote';
+import { symbiote } from '../../abstract/url-exports.js';
 import { UploaderBlock } from '../../abstract/UploaderBlock.js';
 import { ActivityBlock } from '../../abstract/ActivityBlock.js';
 import { registerMessage, unregisterMessage } from './messages.js';
@@ -106,7 +106,7 @@ export class ExternalSource extends UploaderBlock {
   mountIframe() {
     /** @type {HTMLIFrameElement} */
     // @ts-ignore
-    let iframe = create({
+    let iframe = symbiote.create({
       tag: 'iframe',
       attributes: {
         src: this.remoteUrl(),

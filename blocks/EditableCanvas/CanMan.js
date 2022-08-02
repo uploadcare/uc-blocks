@@ -1,11 +1,11 @@
 // Canvas Manipulator
-import { applyStyles, applyAttributes } from '@symbiotejs/symbiote';
+import { symbiote } from '../../abstract/url-exports.js';
 const SVGNS = 'http://www.w3.org/2000/svg';
 
 export class CanMan {
   _syncSvgSize() {
     let rect = this.svgGroupEl.getBoundingClientRect();
-    applyAttributes(this.svgEl, {
+    symbiote.applyAttributes(this.svgEl, {
       viewBox: `0, 0, ${rect.width}, ${rect.height}`,
       width: rect.width,
       height: rect.height,
@@ -35,12 +35,12 @@ export class CanMan {
   _backSyncSvg() {
     this.svgGroupEl.style.transform = null;
     this.svgGroupEl.style.filter = null;
-    applyAttributes(this.svgEl, {
+    symbiote.applyAttributes(this.svgEl, {
       viewBox: `0, 0, ${this.can.width}, ${this.can.height}`,
       width: this.can.width,
       height: this.can.height,
     });
-    applyAttributes(this.svgImgEl, {
+    symbiote.applyAttributes(this.svgImgEl, {
       href: this.can.toDataURL('image/png'),
       width: this.can.width,
       height: this.can.height,
@@ -86,7 +86,7 @@ export class CanMan {
   }
 
   applyCss(cssMap) {
-    applyStyles(this.svgGroupEl, cssMap);
+    symbiote.applyStyles(this.svgGroupEl, cssMap);
   }
 
   getImg() {

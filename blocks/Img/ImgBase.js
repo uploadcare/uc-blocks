@@ -1,4 +1,4 @@
-import { BaseComponent } from '@symbiotejs/symbiote';
+import { symbiote } from '../../abstract/url-exports.js';
 import { applyTemplateData } from '../../utils/applyTemplateData.js';
 import { createCdnUrl, createCdnUrlModifiers, createOriginalUrl } from '../../utils/cdn-utils.js';
 import { PROPS_MAP } from './props-map.js';
@@ -17,7 +17,7 @@ for (let prop in PROPS_MAP) {
   CSS_PROPS[CSS_PREF + prop] = PROPS_MAP[prop]?.default || '';
 }
 
-export class ImgBase extends BaseComponent {
+export class ImgBase extends symbiote.BaseComponent {
   cssInit$ = CSS_PROPS;
 
   /**
